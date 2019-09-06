@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <style>
+        .time {
+            background-color: #e5e5e5 !important;
+        }
+
+        .tecnico {
+            background-color: #F9F9F9 !important;
+        }
+
+        .relatorio-centro {
+            text-align: center;
+        }
+
+        html,
+        body,
+        .main {
+            background-color: #FFFFFF !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="panel" style="padding:0; color:#000000;">
+        <div style="width:100%; height:700px; overflow:scroll;" id="teste">
+            <table id="relatorio" class="freeze">
+                <thead>
+                    <tr class="relatorio-centro">
+                        <td colspan="2"></td>
+                        <td rowspan="2">Código</td>
+                        <td rowspan="2">Numero Camisa</td>
+                        <td colspan="3" v-for="val in cabecalho" style="text-align:center;">
+                            {{val}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <template colspan="3" v-for="val in cabecalho" style="text-align:center;">
+                            <td>Gols</td>
+                            <td>Faltas</td>
+                            <td>Nota</td>
+                        </template>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="val in myArray " :class="{'time': (val[0] == 'time'),
+                                               'tecnico': (val[0] == 'tecnico')}">
+                        <td v-for="(i, index) in val" :class="{'relatorio-centro': (index > 1)}">
+                            {{i}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+
+        new Vue({
+            el: '#relatorio',
+            data: {
+                cabecalho: ['Jan/2015', 'Fev/2015', 'Mar/2015',],
+                myArray: [['time', 'São Paulo', '', '', '10', '91', 'RUIM', '27', '99', 'MEDIO', '100', '100', 'MEDIO',],
+                ['tecnico', 'TITE', '1', '', '10', '91', 'RUIM', '100', '99', 'MEDIO', '100', '100', 'MEDIO',],
+                ['jogador', 'CAFU', '2', '6', '10', '91', 'RUIM', '100', '99', 'MEDIO', '100', '100', 'MEDIO',],
+                ['tecnico', 'FELIPAO', '3', '', '-', '-', '-', '33', '100', 'MEDIO', '100', '100', 'MEDIO',],
+                ['jogador', 'PELÉ', '4', '9', '-', '-', '-', '33', '100', 'MEDIO', '100', '100', 'MEDIO',],
+                ['time', 'Barcelona', '', '', '50', '99', 'MEDIO', '83', '96,83', 'BOM', '66', '100', 'MEDIO',],
+                ['tecnico', 'CUCA', '5', '', '100', '97', 'BOM', '100', '96', 'BOM', '100', '100', 'BOM',],
+                ['jogador', 'RONALDINHO', '6', '11', '100', '97', 'BOM', '100', '96', 'BOM', '100', '100', 'BOM',],
+                ['tecnico', 'TELE SANTANA', '7', '', '0', '100', 'MEDIO', '66', '97', 'MEDIO', '0', '100', 'MEDIO',],
+                ['jogador', 'MESSI', '8', '10', '0', '100', 'MEDIO', '66', '97', 'MEDIO', '0', '100', 'MEDIO',],
+                ['time', 'Real Madrid', '', '', '12', '98', 'MEDIO', '63', '96', 'MEDIO', '11', '98', 'MEDIO',],
+                ['tecnico', 'ZIDANE', '9', '', '50', '100', 'MEDIO', '83', '100', 'BOM', '50', '100', 'MEDIO',],
+                ['jogador', 'ROBINHO', '10', '9', '50', '100', 'MEDIO', '83', '100', 'BOM', '50', '100', 'MEDIO',],
+                ['tecnico', 'PEP', '11', '', '0', '100', 'MEDIO', '66', '75', 'RUIM', '-', '-', '-',],
+                ['jogador', 'MARTA', '12', '9', '0', '100', 'MEDIO', '66', '75', 'RUIM', '-', '-', '-',],
+                ['tecnico', 'SIMEONI', '13', '', '100', '100', 'BOM', '100', '97', 'BOM', '-', '-', '-',],
+                ['jogador', 'FILIPI COUTINHO', '14', '7', '100', '100', 'BOM', '100', '97', 'BOM', '-', '-', '-',],
+                ['tecnico', 'MOURINHO', '15', '', '-50', '96', 'MEDIO', '-', '-', '-', '66', '98', 'MEDIO',],],
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>
